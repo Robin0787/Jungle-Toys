@@ -1,15 +1,20 @@
 import { UserCircleIcon } from '@heroicons/react/24/solid';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { Tooltip } from 'react-tooltip';
+import logo from "../../assets/logo.png";
 
 const Menu = () => {
     const menuItems = <>
-        <Link className='px-4 py-2 bg-gray-100 rounded-md ' to={'/'}>Home</Link>
-        <Link className='px-4 py-2 bg-gray-100 rounded-md ' to={'/all-toys'}>All Toys</Link>
-        <Link className='px-4 py-2 bg-gray-100 rounded-md ' to={'/blogs'}>Blogs</Link>
+        <NavLink className={({isActive}) => isActive ? 'px-4 py-2 bg-gray-100 duration-300 rounded-md text-black' : "px-4 py-2 hover:bg-gray-100 duration-300 rounded-md"} to={'/'}>Home</NavLink>        
+        <NavLink className={({isActive}) => isActive ? 'px-4 py-2 bg-gray-100 duration-300 rounded-md text-black' : "px-4 py-2 hover:bg-gray-100 duration-300 rounded-md"} to={'/all-toys'}>All Toys</NavLink>        
+        <NavLink className={({isActive}) => isActive ? 'px-4 py-2 bg-gray-100 duration-300 rounded-md text-black' : "px-4 py-2 hover:bg-gray-100 duration-300 rounded-md"} to={'/my-toys'}>My Toys</NavLink>        
+        <NavLink className={({isActive}) => isActive ? 'px-4 py-2 bg-gray-100 duration-300 rounded-md text-black' : "px-4 py-2 hover:bg-gray-100 duration-300 rounded-md"} to={'/add-toys'}>Add A Toy</NavLink>        
+        <NavLink className={({isActive}) => isActive ? 'px-4 py-2 bg-gray-100 duration-300 rounded-md text-black' : "px-4 py-2 hover:bg-gray-100 duration-300 rounded-md"} to={'/blogs'}>Blogs</NavLink>        
     </>
+
     return (
-        <div className="navbar bg-gray-200 text-black">
+        <div className="navbar bg-white rounded-b-md text-black">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -19,10 +24,13 @@ const Menu = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <h2 className='text-2xl'>Jungle Toys</h2>
+                <Link to={'/'} className='flex justify-center items-center gap-2'>
+                <img src={logo} className='h-16' alt="" />
+                <h2 className="text-2xl">Jungle Toys</h2>
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal gap-4   ">
+                <ul className="menu menu-horizontal gap-4  text-gray-500">
                     {menuItems}
                 </ul>
             </div>
@@ -31,7 +39,7 @@ const Menu = () => {
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
                             {
-                                true ? <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                true ? <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" data-tooltip-id="my-tooltip" data-tooltip-content="User Name"/>
                                 : <UserCircleIcon className='h-full w-full'/>
                             }
                         </div>
@@ -42,6 +50,7 @@ const Menu = () => {
                     </ul>
                 </div>
             </div>
+            <Tooltip id="my-tooltip" />
         </div>
     );
 };

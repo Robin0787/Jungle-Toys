@@ -4,9 +4,11 @@ import Menu from '../Shared/Menu/Menu';
 
 const Main = () => {
     return (
-        <div className='text-center'>
+        <div className='text-center font-thin'>
+            <article className='w-[90%] mx-auto'>
             <Menu />
             <Outlet />
+            </article>
         </div>
     );
 };
