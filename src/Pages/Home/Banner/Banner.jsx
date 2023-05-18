@@ -31,7 +31,7 @@ const Banner = () => {
 
     });
     return (
-        <section className='md:flex mt-6 mb-20'>
+        <section className='md:flex mt-6 mb-20 space-y-5 md:space-y-0'>
             <article className='md:w-1/2 flex justify-center items-center'>
                 <div data-aos="fade-right"
                         data-aos-offset="200"
@@ -48,7 +48,7 @@ const Banner = () => {
                     </button>
                 </div>
             </article>
-            <article className='md:w-1/2'>
+            <article className='md:w-1/2 lg:pb-10 lg:px-5'>
                 <div data-aos="fade-left"
                         data-aos-offset="200"
                         data-aos-delay="50"
@@ -56,11 +56,10 @@ const Banner = () => {
                         data-aos-easing="ease-in-out"
                         data-aos-mirror="true"
                         data-aos-once="false"
-                        data-aos-anchor-placement="top-center" className='relative flex justify-center'>
+                        data-aos-anchor-placement="top-right" className='relative flex justify-center'>
                     <img  src={img1} alt="" className='rounded-md' />
                     <div className='absolute top-3/4 right-4 flex items-center gap-4 px-2'>
-                        <img
-                            src={img2} alt="" className='w-1/2 border-8 rounded-md border-gray-300' />
+                        <img src={img2} alt="" className='w-1/2 border-8 rounded-md border-gray-300' />
                         <img src={img3} alt="" className='w-1/2  border-8 rounded-md border-gray-300' />
                     </div>
                 </div>
