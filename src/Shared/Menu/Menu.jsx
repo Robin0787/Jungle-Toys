@@ -1,4 +1,3 @@
-import { UserCircleIcon } from '@heroicons/react/24/solid';
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
@@ -35,13 +34,11 @@ const Menu = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <div className="dropdown dropdown-end">
+                {
+                    true ? <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            {
-                                true ? <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" data-tooltip-id="my-tooltip" data-tooltip-content="User Name"/>
-                                : <UserCircleIcon className='h-full w-full'/>
-                            }
+                            <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" data-tooltip-id="my-tooltip" data-tooltip-content="User Name"/> 
                         </div>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52">
@@ -49,6 +46,9 @@ const Menu = () => {
                         <li><a>Logout</a></li>
                     </ul>
                 </div>
+                : 
+                <Link to={'/login'} className='bg-orange-500 text-white px-5 py-1 rounded-sm'>Login</Link>
+                }
             </div>
             <Tooltip id="my-tooltip" />
         </div>
