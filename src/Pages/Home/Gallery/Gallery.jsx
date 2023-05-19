@@ -35,7 +35,7 @@ const Gallery = () => {
     return (
         <section className='mt-52'>
             <article>
-                <h2 className='text-center text-2xl font-semibold text-gray-700 mb-5'>Gallery</h2>
+                <h2 className='text-center text-3xl text-gray-700 mb-5'>Gallery</h2>
             </article>
             <article className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-2 p-5'>
                 <div data-aos="fade-right"
