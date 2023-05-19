@@ -16,12 +16,12 @@ const SingleToy = ({ toy }) => {
                 <div className='flex justify-between items-center'>
                     <Rating
                     className='text-orange-500'
-                        stop={parseInt(rating)}
+                        stop={Math.round(rating)}
                         emptySymbol={<StarIcon className='h-4 w-4'/>}
                         fullSymbol={<StarIcon className='h-4 w-4'/>}
                         fractions={2}
                     />
-                    <Link className='text-black hover:text-orange-500 duration-300'><ArrowRightIcon className=' h-6 w-6' /></Link>
+                    <Link to={`/details/${_id}`} className='text-black hover:text-orange-500 duration-300'><ArrowRightIcon className=' h-6 w-6' /></Link>
                 </div>
             </div>
         </div>
