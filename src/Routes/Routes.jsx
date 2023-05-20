@@ -40,7 +40,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "/add-toys",
-                element: <PrivateRoute><AddToys /></PrivateRoute>
+                element: <AddToys />
             },
             {
                 path: "/login",

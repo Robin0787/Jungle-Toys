@@ -6,8 +6,8 @@ import Menu from '../Shared/Menu/Menu';
 
 const Main = () => {
     return (
-        <div className='font-thin'>
-            <article className='w-[90%] mx-auto overflow-hidden'>
+        <div className='font-thin overflow-hidden'>
+            <article className='w-[90%] mx-auto'>
             <Menu />
             <Outlet />
             </article>
