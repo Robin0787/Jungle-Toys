@@ -1,4 +1,5 @@
 import React from 'react';
+import { Toaster } from 'react-hot-toast';
 import { Outlet } from 'react-router-dom';
 import Menu from '../Shared/Menu/Menu';
 
@@ -9,6 +10,7 @@ const Main = () => {
             <Menu />
             <Outlet />
             </article>
+            <Toaster />
         </div>
     );
 };

@@ -4,7 +4,6 @@ import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 const SingleToy = ({ toy }) => {
     const { _id, name, image, price, rating } = toy;
-    console.log(toy);
     return (
         <div className='flex gap-3 p-4 md:px-5 md:py-8 shadow-xl rounded-xl '>
             <img src={image} alt="" className='w-1/2 rounded-md' />
