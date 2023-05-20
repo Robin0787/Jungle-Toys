@@ -14,7 +14,7 @@ const AllToys = () => {
         toast.success(name);
     }
     return (
-        <section className='space-y-8 mt-5'>
+        <section className='space-y-8 my-5'>
             <article className='text-center'>
                 <input onChange={handleToyName} value={name} type="text" name="name" className='rounded-s-full bg-white text-black border-2 border-gray-200 border-e-0 focus:outline-none px-4 py-2 ' />
                 <button onClick={handleToySearch} className='rounded-e-full border-2 border-s-0 border-gray-200 px-4 py-2 bg-orange-500 text-white'>Search</button>

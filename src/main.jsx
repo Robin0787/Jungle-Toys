@@ -6,9 +6,7 @@ import Routes from './Routes/Routes'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <AuthProvider>
     <RouterProvider router={Routes}/>
     </AuthProvider>
-  </React.StrictMode>
 )

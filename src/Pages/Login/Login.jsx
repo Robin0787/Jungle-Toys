@@ -1,27 +1,41 @@
 import Lottie from "lottie-react";
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginAnimation from "../../assets/loginAnimation.json";
 import { authContext } from "../AuthProvider/AuthProvider";
 
 const Login = () => {
     const [showEye, setShowEye] = useState(false);
     const [showPass, setShowPass] = useState(false);
-    const {continueWithGoogle, continueWithGithub} = useContext(authContext);
+    const {logInWithEmailAndPass, continueWithGoogle, continueWithGithub, passReset} = useContext(authContext);
+    const emailRef = useRef();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from  = location.state?.from?.pathname || '/';
 
     function handleLogin(e) {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log({ email, password });
+        logInWithEmailAndPass(email, password)
+        .then(res => {
+            toast.success('Login Successful');
+            form.reset();
+            setShowEye(false);
+            navigate(from, {replace: true});
+        })
+        .catch(err => {
+            toast.error(err.message.slice(22, -2).replace(/-/g, ' '));
+        })
     }
     function handleGoogleLogin() {
         continueWithGoogle()
         .then(res => {
             toast.success('SignUp Successful');
+            navigate(from, {replace: true});
         })
         .catch(err => {
             toast.error('Something wrong! check Console');
@@ -32,6 +46,7 @@ const Login = () => {
         continueWithGithub()
         .then(res => {
             toast.success('SignUp Successful');
+            navigate(from, {replace: true});
         })
         .catch(err => {
             toast.error('Something wrong! check Console');
@@ -40,12 +55,22 @@ const Login = () => {
     }
     function handlePassChange(e) {
         const pass = e.target.value;
-        console.log(pass);
+        if(pass.length > 0) {
+            setShowEye(true);
+        }else {
+            setShowEye(false);
+        }
     }
     function handleResetPass() {
         const email = emailRef.current.value;
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-            toast.success('Email Ok');
+            passReset(email)
+            .then(() => {
+                toast.success('Reset Email Sent');
+            })
+            .catch(err => {
+                toast.error(err.message.slice(22, -2).replace(/-/g, ' '));
+            })
         }
         else if (email.length < 1) {
             toast.error('Write your email first');
@@ -66,14 +91,14 @@ const Login = () => {
                     <form onSubmit={handleLogin} className='shadow-lg text-left rounded-md py-5 px-6 lg:px-14 space-y-5 w-full'>
                         <h2 className="text-2xl text-gray-700 text-center font-semibold rounded-md my-5">Login</h2>
                         <div className='space-y-2'>
-                            <label htmlFor="email" className='text-md text-gray-600'>Email</label><br />
-                            <input type="email" name='email' placeholder='Your email' className='p-2 w-full border focus:ring duration-500 ring-gray-300 bg-white focus:outline-0 rounded-md placeholder:text-sm' required />
+                            <label htmlFor="email" className='text-sm text-gray-600'>Email</label><br />
+                            <input type="email" ref={emailRef} name='email' placeholder='Your email' className='p-2 w-full border focus:ring duration-500 ring-gray-300 bg-white focus:outline-0 rounded-md placeholder:text-xs' required />
                         </div>
                         <div className='space-y-2'>
-                            <label htmlFor="password" className='text-md text-gray-600'>Password</label><br />
+                            <label htmlFor="password" className='text-sm text-gray-600'>Password</label><br />
                             <div className='space-y-1'>
                                 <div className='relative'>
-                                    <input onChange={handlePassChange} type={showPass ? 'text' : "password"} name='password' placeholder='Your password' className='p-2 w-full border focus:ring duration-500 ring-gray-300 bg-white focus:outline-0 rounded-md placeholder:text-sm' required />
+                                    <input onChange={handlePassChange} type={showPass ? 'text' : "password"} name='password' placeholder='Your password' className='p-2 w-full border focus:ring duration-500 ring-gray-300 bg-white focus:outline-0 rounded-md placeholder:text-xs' required />
                                     {showEye && <p onClick={() => { setShowPass(!showPass) }} className='absolute right-2 top-[5px] cursor-pointer p-2 hover:bg-gray-100 rounded-full'>
                                         {
                                             showPass ?
@@ -83,7 +108,7 @@ const Login = () => {
                                         }
                                     </p>}
                                 </div>
-                                <p className='text-sm text-gray-500'>forgot password? <span className='text-[#ff3811] cursor-pointer' onClick={handleResetPass}>reset</span></p>
+                                <p className='text-xs text-gray-500'>forgot password? <span className='text-[#ff3811] cursor-pointer' onClick={handleResetPass}>reset</span></p>
                             </div>
                         </div>
                         <div>
@@ -91,7 +116,7 @@ const Login = () => {
                         </div>
                         <div className='flex w-full items-center'>
                             <hr className='w-1/3' />
-                            <p className='text-center text-sm text-gray-500 px-2'>Or Continue with</p>
+                            <p className='text-center text-xs text-gray-500 px-2'>Or Continue with</p>
                             <hr className='w-1/3' />
                         </div>
                         <div className='flex items-center justify-center gap-4'>

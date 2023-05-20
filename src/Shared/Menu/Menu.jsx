@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
+import { authContext } from '../../Pages/AuthProvider/AuthProvider';
 import logo from "../../assets/logo.png";
 
 const Menu = () => {
+    const {user, logOut} = useContext(authContext);
     const menuItems = <>
         <NavLink className={({isActive}) => isActive ? 'px-4 py-2 bg-gray-100 duration-300 rounded-md text-black' : "px-4 py-2 hover:bg-gray-100 duration-300 rounded-md"} to={'/'}>Home</NavLink>        
         <NavLink className={({isActive}) => isActive ? 'px-4 py-2 bg-gray-100 duration-300 rounded-md text-black' : "px-4 py-2 hover:bg-gray-100 duration-300 rounded-md"} to={'/all-toys'}>All Toys</NavLink>        
@@ -35,15 +37,14 @@ const Menu = () => {
             </div>
             <div className="navbar-end">
                 {
-                    false ? <div className="dropdown dropdown-end">
+                    user ? <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" data-tooltip-id="my-tooltip" data-tooltip-content="User Name"/> 
+                            <img src={user.photoURL} data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName}/>
                         </div>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52">
-                        <li><a>Name</a></li>
-                        <li><a>Logout</a></li>
+                        <li onClick={logOut}><a>Logout</a></li>
                     </ul>
                 </div>
                 : 
