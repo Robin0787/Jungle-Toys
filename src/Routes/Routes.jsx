@@ -10,6 +10,7 @@ import NotFound from "../Pages/NotFound/NotFound";
 import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
 import SignUp from "../Pages/SIgnUp/SignUp";
 import ToyDetails from "../Pages/ToyDetails/ToyDetails";
+import UpdateToy from "../Pages/UpdateToy/UpdateToy";
 
 
 const Routes = createBrowserRouter([
@@ -50,6 +51,11 @@ const Routes = createBrowserRouter([
             {
                 path: "/signUp",
                 element: <SignUp />
+            },
+            {
+                path: '/update-toy/:id',
+                element: <UpdateToy />,
+                loader: ({params}) => fetch(`http://localhost:2000/details/${params.id}`)
             }
         ]
     },

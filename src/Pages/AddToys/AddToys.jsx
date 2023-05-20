@@ -38,8 +38,7 @@ const AddToys = () => {
         })
     }
     return (
-        <section >
-            <article className='lg:w-[80%] mx-auto my-5'>
+        <article className='lg:w-[80%] mx-auto my-5'>
                 <Link to={'/'} className='text-md text-black hover:text-orange-400 duration-300 font-semibold flex items-center gap-1 mb-5'><ArrowLeftIcon className='w-5 h-5' /> Back To Home</Link>
                 <div className='p-10 bg-[#F4F3F0] rounded-lg'>
                     <h2 className='text-3xl font-semibold text-center my-6 text-[#331A15]'>Add A Toy</h2>
@@ -96,8 +95,7 @@ const AddToys = () => {
                         </div>
                     </form>
                 </div>
-            </article>
-        </section>
+        </article>
     );
 };
 
