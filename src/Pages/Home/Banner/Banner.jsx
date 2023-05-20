@@ -48,7 +48,7 @@ const Banner = () => {
                     </button>
                 </div>
             </article>
-            <article className='md:w-1/2 lg:pb-10 lg:px-5'>
+            <article className='md:w-1/2 lg:pb-10 lg:px-5 '>
                 <div data-aos="fade-left"
                         data-aos-offset="200"
                         data-aos-delay="50"
