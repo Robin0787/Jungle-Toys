@@ -3,7 +3,7 @@ import React from 'react';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 
-const Toy = ({ toy }) => {
+const MyToy = ({ toy }) => {
     const { name, price, quantity, rating, _id, image, sellerName, subCategory } = toy;
     return (
         <article className='md:flex justify-between items-center border border-gray-200 rounded-md p-5 gap-5 space-y-2 text-left'>
@@ -34,4 +34,4 @@ const Toy = ({ toy }) => {
     );
 };
 
-export default Toy;
+export default MyToy;

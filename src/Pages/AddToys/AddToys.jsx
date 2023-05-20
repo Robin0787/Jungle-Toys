@@ -1,12 +1,15 @@
 import { ArrowLeftIcon } from '@heroicons/react/24/solid';
-import React from 'react';
+import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { authContext } from '../AuthProvider/AuthProvider';
 
 const AddToys = () => {
+    const {user} = useContext(authContext);
     function handleSubmit(e) {
         e.preventDefault();
         const form = e.target;
-        const toyName = form.toyName.value;
+        const name = form.name.value;
         const price = form.price.value;
         const sellerName  = form.sellerName.value;
         const sellerEmail  = form.sellerEmail.value;
@@ -14,12 +17,28 @@ const AddToys = () => {
         const rating = form.rating.value;
         const quantity = form.quantity.value;
         const details = form.details.value;
-        const photo = form.photo.value;
-        const toyInfo = { toyName, price, sellerName, sellerEmail, subCategory, rating, quantity, details, photo };
+        const image = form.photo.value;
+        const toyInfo = { name, price, sellerName, sellerEmail, subCategory, rating, quantity, details, image };
         console.log(toyInfo);
+        fetch('http://localhost:2000/add-toy', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(toyInfo)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.insertedId){
+                toast.success('Toy Added');
+                form.reset();
+            }else {
+                toast.error('Something wrong!!');
+            }
+        })
     }
     return (
-        <section className=''>
+        <section >
             <article className='lg:w-[80%] mx-auto my-5'>
                 <Link to={'/'} className='text-md text-black hover:text-orange-400 duration-300 font-semibold flex items-center gap-1 mb-5'><ArrowLeftIcon className='w-5 h-5' /> Back To Home</Link>
                 <div className='p-10 bg-[#F4F3F0] rounded-lg'>
@@ -29,12 +48,12 @@ const AddToys = () => {
                         <div className='md:flex gap-10 my-5 text-gray-700'>
                             <div className='md:w-1/2 space-y-5'>
                                 <div className='space-y-3'>
-                                    <label htmlFor="toyName" className='text-md font-semibold text-gray-600'>Toy Name</label><br />
-                                    <input type="text" name='toyName' className='w-full p-3 bg-white rounded-md focus:outline-0 focus:ring-4 ring-gray-200 duration-300' placeholder='Enter Toy Name' required /><br />
+                                    <label htmlFor="name" className='text-md font-semibold text-gray-600'>Toy Name</label><br />
+                                    <input type="text" name='name' className='w-full p-3 bg-white rounded-md focus:outline-0 focus:ring-4 ring-gray-200 duration-300' placeholder='Enter Toy Name'  required /><br />
                                 </div>
                                 <div className='space-y-3'>
                                     <label htmlFor="sellerName" className='text-md font-semibold text-gray-600'>Seller Name</label><br />
-                                    <input type="text" name='sellerName' className='w-full p-3 bg-white rounded-md focus:outline-0 focus:ring-4 ring-gray-200 duration-300' placeholder='Enter Seller Name' required /><br />
+                                    <input type="text" name='sellerName' className='w-full p-3 bg-white rounded-md focus:outline-0 focus:ring-4 ring-gray-200 duration-300' placeholder='Enter Seller Name' defaultValue={user.displayName} required /><br />
                                 </div>
                                 <div className='space-y-3'>
                                     <label htmlFor="subCategory" className='text-md font-semibold text-gray-600'>Sub-Category</label><br />
@@ -52,7 +71,7 @@ const AddToys = () => {
                                 </div>
                                 <div className='space-y-3'>
                                     <label htmlFor="sellerEmail" className='text-md font-semibold text-gray-600'>Seller Email</label><br />
-                                    <input type="email" name='sellerEmail' className='w-full p-3 bg-white rounded-md focus:outline-0 focus:ring-4 ring-gray-200 duration-300' placeholder='Enter Seller Email' required /><br />
+                                    <input type="email" name='sellerEmail' className='w-full p-3 bg-white rounded-md focus:outline-0 focus:ring-4 ring-gray-200 duration-300' placeholder='Enter Seller Email' defaultValue={user.email} required /><br />
                                 </div>
                                 <div className="space-y-3">
                                     <label htmlFor="rating" className='text-md font-semibold text-gray-600'>Rating</label><br />

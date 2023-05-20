@@ -11,6 +11,7 @@ import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
 import SignUp from "../Pages/SIgnUp/SignUp";
 import ToyDetails from "../Pages/ToyDetails/ToyDetails";
 
+
 const Routes = createBrowserRouter([
     {
         path: '/',
@@ -40,7 +41,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "/add-toys",
-                element: <AddToys />
+                element: <PrivateRoute><AddToys /></PrivateRoute>
             },
             {
                 path: "/login",

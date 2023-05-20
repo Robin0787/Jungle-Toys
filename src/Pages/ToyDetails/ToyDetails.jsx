@@ -6,7 +6,7 @@ import { useLoaderData, useNavigate } from 'react-router-dom';
 const ToyDetails = () => {
     const toy = useLoaderData();
     const navigate = useNavigate();
-    const { name, price, rating, image, details, quantity } = toy;
+    const { name, price, rating, image, details, quantity, sellerName, sellerEmail } = toy;
     return (
         <section className='md:flex gap-5 mt-10 md:mt-20 space-y-5'>
             <article className='shadow-lg p-5 space-y-4'>
@@ -28,8 +28,8 @@ const ToyDetails = () => {
                     <p className="tex-md text-justify text-gray-400">{details}</p>
                 </div>
                 <div className=' text-gray-600'>
-                    <p className="tex-md">{toy['seller-name']}</p>
-                    <p className="tex-md">{toy['seller-email']}</p>
+                    <p className="tex-md">{sellerName}</p>
+                    <p className="tex-md">{sellerEmail}</p>
                 </div>
                 <div className='flex justify-between items-center'>
                     <p className="tex-md text-gray-600">Available : {quantity} pieces</p>
