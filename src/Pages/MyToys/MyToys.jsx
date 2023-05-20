@@ -40,15 +40,21 @@ const MyToys = () => {
     }
 
     function sortAscending() {
-        const sorted = myToys.sort((a, b) => a.price - b.price);
-        setMyToys(sorted);
-        console.log(myToys);
+        fetch(`http://localhost:2000/sort-ascending?email=${user.email}`)
+        .then(res => res.json())
+        .then(data => {setMyToys(data)});
     }
+    function sortDescending() {
+        fetch(`http://localhost:2000/sort-descending?email=${user.email}`)
+        .then(res => res.json())
+        .then(data => {setMyToys(data)});
+    }
+
     return (
         <article className='space-y-5 my-5 md:my-10'>
             <div className='flex justify-start items-center  rounded'>
                 <button onClick={sortAscending} className='px-5 py-2 text-md text-black focus:bg-orange-500 focus:text-white border border-e-0 border-gray-200'>ASCENDING</button>
-                <button className='px-5 py-2 text-md text-black focus:bg-orange-500 focus:text-white border border-s-0  border-gray-200'>DESCENDING</button>
+                <button onClick={sortDescending} className='px-5 py-2 text-md text-black focus:bg-orange-500 focus:text-white border border-s-0  border-gray-200'>DESCENDING</button>
             </div>
             <div className='space-y-5 '>
                 {   

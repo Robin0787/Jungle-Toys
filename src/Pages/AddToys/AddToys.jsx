@@ -10,7 +10,7 @@ const AddToys = () => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
-        const price = form.price.value;
+        const price = parseFloat(form.price.value);
         const sellerName  = form.sellerName.value;
         const sellerEmail  = form.sellerEmail.value;
         const subCategory = form.subCategory.value;
