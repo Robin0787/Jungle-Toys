@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const OurCollection = () => {
     return (
-       <section>
+       <section className='my-10'>
         <h2 className='text-3xl text-black text-center mb-10'>Our Collection</h2>
          <article className='bg-gray-100 p-5 md:p-10 rounded-md'>
         <div className="md:flex justify-between items-center gap-5 space-y-8">
