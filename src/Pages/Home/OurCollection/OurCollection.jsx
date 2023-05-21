@@ -3,7 +3,7 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 
-const CarouselBanner = () => {
+const OurCollection = () => {
     return (
        <section>
         <h2 className='text-3xl text-black text-center mb-10'>Our Collection</h2>
@@ -33,4 +33,4 @@ const CarouselBanner = () => {
     );
 };
 
-export default CarouselBanner;
+export default OurCollection;
