@@ -53,8 +53,8 @@ const MyToys = () => {
     return (
         <article className='space-y-5 my-5 md:my-10'>
             <div className='flex justify-start items-center  rounded'>
-                <button onClick={sortAscending} className='px-5 py-2 text-md text-black focus:bg-orange-500 focus:text-white border border-e-0 border-gray-200'>ASCENDING</button>
-                <button onClick={sortDescending} className='px-5 py-2 text-md text-black focus:bg-orange-500 focus:text-white border border-s-0  border-gray-200'>DESCENDING</button>
+                <button onClick={sortAscending} className='px-5 py-2 text-md text-black focus:bg-orange-500 focus:text-white border border-e-0 border-gray-200'>Lowest</button>
+                <button onClick={sortDescending} className='px-5 py-2 text-md text-black focus:bg-orange-500 focus:text-white border border-s-0  border-gray-200'>Highest</button>
             </div>
             <div className='space-y-5 '>
                 {   
