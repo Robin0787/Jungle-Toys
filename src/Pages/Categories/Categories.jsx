@@ -12,20 +12,20 @@ const Categories = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch('http://localhost:2000/category/Wild Animals')
+        fetch('https://jungle-toys-server.vercel.app/category/Wild Animals')
             .then(res => res.json())
             .then(data => {setWildAnimals(data); setLoading(false)});
     }, []);
 
     function showDomesticAnimal() {
         setLoading(true);
-        fetch('http://localhost:2000/category/Domestic Animals')
+        fetch('https://jungle-toys-server.vercel.app/category/Domestic Animals')
             .then(res => res.json())
             .then(data => { setDomesticAnimals(data); setLoading(false) });
     }
     function showBirds() {
         setLoading(true);
-        fetch('http://localhost:2000/category/Birds')
+        fetch('https://jungle-toys-server.vercel.app/category/Birds')
             .then(res => res.json())
             .then(data => { setBirds(data); setLoading(false) });
     }

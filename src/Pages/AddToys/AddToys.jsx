@@ -20,8 +20,7 @@ const AddToys = () => {
         const details = form.details.value;
         const image = form.photo.value;
         const toyInfo = { name, price, sellerName, sellerEmail, subCategory, rating, quantity, details, image };
-        console.log(toyInfo);
-        fetch('http://localhost:2000/add-toy', {
+        fetch('https://jungle-toys-server.vercel.app/add-toy', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -38,6 +37,7 @@ const AddToys = () => {
             }
         })
     }
+    // For changing website title based on route;
     useEffect(() => {
         document.title = `Jungle Toys | ${location?.pathname.slice(1)}`;
     }, [location])

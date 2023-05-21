@@ -11,7 +11,7 @@ const MyToys = () => {
     const [myToys, setMyToys] = useState([]);
     const location = useLocation();
     useEffect(() => {
-        fetch(`http://localhost:2000/my-toys?email=${user.email}`)
+        fetch(`https://jungle-toys-server.vercel.app/my-toys?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyToys(data);
@@ -28,7 +28,7 @@ const MyToys = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:2000/delete-toy/${id}`, { method: "DELETE" })
+                fetch(`https://jungle-toys-server.vercel.app/delete-toy/${id}`, { method: "DELETE" })
                     .then(res => res.json())
                     .then(data => {
                         if (data.deletedCount > 0) {
@@ -42,12 +42,12 @@ const MyToys = () => {
     }
 
     function sortAscending() {
-        fetch(`http://localhost:2000/sort-ascending?email=${user.email}`)
+        fetch(`https://jungle-toys-server.vercel.app/sort-ascending?email=${user.email}`)
         .then(res => res.json())
         .then(data => {setMyToys(data)});
     }
     function sortDescending() {
-        fetch(`http://localhost:2000/sort-descending?email=${user.email}`)
+        fetch(`https://jungle-toys-server.vercel.app/sort-descending?email=${user.email}`)
         .then(res => res.json())
         .then(data => {setMyToys(data)});
     }

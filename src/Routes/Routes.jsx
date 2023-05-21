@@ -29,12 +29,12 @@ const Routes = createBrowserRouter([
             {
                 path: "/details/:id",
                 element: <PrivateRoute><ToyDetails /></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:2000/details/${params.id}`)
+                loader: ({ params }) => fetch(`https://jungle-toys-server.vercel.app/details/${params.id}`)
             },
             {
                 path: "/all-toys",
                 element: <AllToys />,
-                loader: () => fetch('http://localhost:2000/all-toys')
+                loader: () => fetch('https://jungle-toys-server.vercel.app/all-toys')
             },
             {
                 path: "/my-toys",
@@ -55,7 +55,7 @@ const Routes = createBrowserRouter([
             {
                 path: '/update-toy/:id',
                 element: <PrivateRoute><UpdateToy /></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:2000/details/${params.id}`)
+                loader: ({params}) => fetch(`https://jungle-toys-server.vercel.app/details/${params.id}`)
             }
         ]
     },

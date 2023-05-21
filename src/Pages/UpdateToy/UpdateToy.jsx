@@ -11,11 +11,11 @@ const UpdateToy = () => {
     function handleSubmit(e) {
         e.preventDefault();
         const form = e.target;
-        const price = parseFloat(form.price.value);
+        const price = Number(form.price.value);
         const quantity = form.quantity.value;
         const details = form.details.value;
         const updatedToy = { price, quantity, details };
-        fetch(`http://localhost:2000/update-toy/${_id}`, {
+        fetch(`https://jungle-toys-server.vercel.app/update-toy/${_id}`, {
             method: "PATCH",
             headers: {
                 'content-type': "application/json"

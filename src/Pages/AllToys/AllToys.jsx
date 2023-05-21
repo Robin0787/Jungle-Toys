@@ -9,12 +9,14 @@ const AllToys = () => {
     const [name, setName] = useState('');
     const location = useLocation();
 
+    // listen and store the input for search
     function handleToyName(e) {
         setName(e.target.value);
     }
     function handleToySearch(e) {
         e.preventDefault();
-        fetch(`http://localhost:2000/toy-search-by-name/${name}`)
+        if(name.length > 0) {
+            fetch(`https://jungle-toys-server.vercel.app/toy-search-by-name/${name}`)
             .then(res => res.json())
             .then(data => {
                 if (data.length > 0) {
@@ -24,11 +26,15 @@ const AllToys = () => {
                     setAllToys([]);
                 }
             })
+        }else {
+            toast.error('Write name first');
+        }
     }
-
+    // For changing the websites title base on route;
     useEffect(() => {
         document.title = `Jungle Toys | ${location?.pathname.slice(1)}`;
-    }, [location])
+    }, [location]);
+
     return (
         <section className='space-y-8 my-5'>
             <article className='text-center'>
