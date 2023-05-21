@@ -41,10 +41,10 @@ const Banner = () => {
                         data-aos-mirror="true"
                         data-aos-once="false"
                         data-aos-anchor-placement="top-left" className='text-left space-y-4 px-6 mt-10'>
-                    <h2 className="text-3xl lg:text-5xl text-black font-semibold leading-normal">Welcome to <br className='lg:hidden' /> <span className='font-thin'>Jungle Toys <br className='lg:hidden' /></span> <br className='hidden lg:inline' /> Where Adventure Begins!</h2>
+                    <h2 className="text-3xl lg:text-5xl text-black font-semibold leading-normal">Welcome to <br className='lg:hidden' /> <span className='text-orange-600'>Jungle Toys <br className='lg:hidden' /></span> <br className='hidden lg:inline' /> Where Adventure Begins!</h2>
                     <p className="text-md text-justify text-gray-500 mb-5">Step into a world of adventure and imagination with our captivating collection of animal-inspired toys. Unleash the wild side of play and create unforgettable memories with Toys 'n Tails!</p>
                     <button>
-                        <Link to={'/all-toys'} className='text-black bg-gray-200 hover:bg-gray-300 duration-300  rounded-md px-4 py-2 hover:shadow-lg'>Show Toys</Link>
+                        <Link to={'/all-toys'} className='text-white bg-orange-500 hover:bg-orange-600 duration-300  rounded-md px-4 py-2 hover:shadow-lg'>Show Toys</Link>
                     </button>
                 </div>
             </article>
