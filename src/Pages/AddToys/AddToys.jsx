@@ -1,11 +1,12 @@
 import { ArrowLeftIcon } from '@heroicons/react/24/solid';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { authContext } from '../AuthProvider/AuthProvider';
 
 const AddToys = () => {
     const {user} = useContext(authContext);
+    const location = useLocation();
     function handleSubmit(e) {
         e.preventDefault();
         const form = e.target;
@@ -37,6 +38,9 @@ const AddToys = () => {
             }
         })
     }
+    useEffect(() => {
+        document.title = `Jungle Toys | ${location?.pathname.slice(1)}`;
+    }, [location])
     return (
         <article className='lg:w-[80%] mx-auto my-5'>
                 <Link to={'/'} className='text-md text-black hover:text-orange-400 duration-300 font-semibold flex items-center gap-1 mb-5'><ArrowLeftIcon className='w-5 h-5' /> Back To Home</Link>

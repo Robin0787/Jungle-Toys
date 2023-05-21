@@ -1,12 +1,18 @@
 import { ArrowLeftIcon, StarIcon } from '@heroicons/react/24/solid';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Rating from 'react-rating';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 
 const ToyDetails = () => {
     const toy = useLoaderData();
     const navigate = useNavigate();
+    const location = useLocation();
     const { name, price, rating, image, details, quantity, sellerName, sellerEmail } = toy;
+    // For changing the websites title
+    useEffect(() => {
+        document.title = `Jungle Toys | ${location?.pathname.slice(1)}`;
+    }, [location]);
+    
     return (
         <section className='md:flex gap-5 mt-10 md:mt-20 space-y-5'>
             <article className='shadow-lg p-5 space-y-4'>

@@ -1,10 +1,11 @@
 import { ArrowLeftIcon } from '@heroicons/react/24/solid';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 
 const UpdateToy = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const toy = useLoaderData();
     const { name, price, rating, image, subCategory, details, quantity, sellerName, sellerEmail, _id } = toy;
     function handleSubmit(e) {
@@ -30,6 +31,10 @@ const UpdateToy = () => {
         })
         
     }
+    // For changing the websites title
+    useEffect(() => {
+        document.title = `Jungle Toys | ${location?.pathname.slice(1)}`;
+    }, [location])
     return (
         <article className='lg:w-[80%] mx-auto my-5'>
                 <button onClick={()=>{navigate(-1)}} className='text-md text-black hover:text-orange-400 duration-300 font-semibold flex items-center gap-1 mb-5'><ArrowLeftIcon className='w-5 h-5' />Go Back</button>

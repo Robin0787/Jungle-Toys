@@ -10,7 +10,7 @@ const OurCollection = () => {
          <article className='bg-gray-100 p-5 md:p-10 rounded-md'>
         <div className="md:flex justify-between items-center gap-5 space-y-8">
             <div className='space-y-5 md:w-1/2'>
-                <h2 className="text-4xl font-bold text-orange-500">Explore Our Enchanting Toy Collection</h2>
+                <h2 className="text-4xl font-bold text-black">Explore Our Enchanting Toy Collection</h2>
                 <p className="text-md w-[90%] text-justify text-gray-500">Explore a carefully curated selection of delightful toys that inspire imagination, spark creativity, and bring endless joy to kids. From educational toys to interactive games, find perfect playtime companions for your little ones. Dive into the magic of childhood and let the adventure begin!</p>
             </div>
         <Carousel className='md:w-1/2 text-center rounded-md'>

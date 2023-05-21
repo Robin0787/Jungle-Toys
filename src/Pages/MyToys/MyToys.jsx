@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import LoadingSpinner from '../../Shared/Loading/LoadingSpinner';
 import { authContext } from '../AuthProvider/AuthProvider';
@@ -8,6 +9,7 @@ import MyToy from './MyToy/MyToy';
 const MyToys = () => {
     const { user } = useContext(authContext);
     const [myToys, setMyToys] = useState([]);
+    const location = useLocation();
     useEffect(() => {
         fetch(`http://localhost:2000/my-toys?email=${user.email}`)
             .then(res => res.json())
@@ -49,6 +51,10 @@ const MyToys = () => {
         .then(res => res.json())
         .then(data => {setMyToys(data)});
     }
+
+    useEffect(() => {
+        document.title = `Jungle Toys | ${location?.pathname.slice(1)}`;
+    }, [location])
 
     return (
         <article className='space-y-5 my-5 md:my-10'>
