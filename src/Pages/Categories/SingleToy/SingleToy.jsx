@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 const SingleToy = ({ toy }) => {
     const { _id, name, image, price, rating } = toy;
     return (
-        <div className='flex gap-3 p-4 md:px-5 md:py-8 shadow-xl rounded-xl '>
+        <div className='flex gap-3 p-4 md:px-5 md:py-8 hover:shadow-xl border duration-300 rounded-xl '>
             <img src={image} alt="" className='w-1/2 rounded-md' />
             <div className='flex flex-col justify-between w-full px-4'>
                 <div>
-                    <h2 className='text-lg font-semibold'>{name}</h2>
-                    <p className='text-gray-600'>Price : ${price}</p>
+                    <h2 className='md:text-lg font-semibold'>{name}</h2>
+                    <p className='text-sm md:text-md text-gray-600'>Price : ${price}</p>
                 </div>
                 <div className='flex justify-between items-center'>
                     <Rating

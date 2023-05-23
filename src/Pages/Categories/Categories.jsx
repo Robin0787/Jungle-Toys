@@ -39,7 +39,7 @@ const Categories = () => {
                         <Tab onClick={showDomesticAnimal}>Domestic Animals</Tab>
                         <Tab onClick={showBirds}>Birds</Tab>
                     </TabList>
-                    <TabPanel className='grid grid-cols-1 md:grid-cols-2 gap-4 p-5'>
+                    <TabPanel className='grid grid-cols-1 md:grid-cols-2 gap-4 py-5'>
                     {
                             loading ? <LoadingSpinner />
                                 :
@@ -47,7 +47,7 @@ const Categories = () => {
 
                         }
                     </TabPanel>
-                    <TabPanel className='grid grid-cols-1 md:grid-cols-2 gap-4 p-5'>
+                    <TabPanel className='grid grid-cols-1 md:grid-cols-2 gap-4 py-5'>
                         {
                             loading ? <LoadingSpinner />
                                 :
@@ -55,7 +55,7 @@ const Categories = () => {
 
                         }
                     </TabPanel>
-                    <TabPanel className='grid grid-cols-1 md:grid-cols-2 gap-4 p-5'>
+                    <TabPanel className='grid grid-cols-1 md:grid-cols-2 gap-4 py-5'>
                         {
                             loading ? <LoadingSpinner />
                                 :
